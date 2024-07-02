@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Tool</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #555;
+        }
+
+        .projects, .tasks {
+            margin-top: 20px;
+        }
+
+        .project, .task {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f4f4f4;
+            border-left: 4px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Project Management Tool</h1>
+    </header>
+    <div class="container">
+        <section id="create-project">
+            <h2>Create a New Project</h2>
+            <div class="form-group">
+                <label for="project-name">Project Name:</label>
+                <input type="text" id="project-name" name="project-name">
+            </div>
+            <div class="form-group">
+                <button onclick="createProject()">Create Project</button>
+            </div>
+        </section>
+        <section id="create-task">
+            <h2>Assign a New Task</h2>
+            <div class="form-group">
+                <label for="task-name">Task Name:</label>
+                <input type="text" id="task-name" name="task-name">
+            </div>
+            <div class="form-group">
+                <label for="task-deadline">Deadline:</label>
+                <input type="date" id="task-deadline" name="task-deadline">
+            </div>
+            <div class="form-group">
+                <label for="task-project">Assign to Project:</label>
+                <select id="task-project" name="task-project">
+                    <!-- Options will be populated dynamically -->
+                </select>
+            </div>
+            <div class="form-group">
+                <button onclick="assignTask()">Assign Task</button>
+            </div>
+        </section>
+        <section class="projects">
+            <h2>Projects</h2>
+            <div id="project-list">
+                <!-- Project list will be populated dynamically -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        let projects = [];
+
+        function createProject() {
+            const projectName = document.getElementById('project-name').value;
+            if (projectName) {
+                const project = {
+                    name: projectName,
+                    tasks: []
+                };
+                projects.push(project);
+                document.getElementById('project-name').value = '';
+                renderProjects();
+                updateProjectOptions();
+            }
+        }
+
+        function assignTask() {
+            const taskName = document.getElementById('task-name').value;
+            const taskDeadline = document.getElementById('task-deadline').value;
+            const taskProject = document.getElementById('task-project').value;
+
+            if (taskName && taskDeadline && taskProject) {
+                const task = {
+                    name: taskName,
+                    deadline: taskDeadline,
+                    completed: false
+                };
+
+                const project = projects.find(proj => proj.name === taskProject);
+                project.tasks.push(task);
+
+                document.getElementById('task-name').value = '';
+                document.getElementById('task-deadline').value = '';
+                renderProjects();
+            }
+        }
+
+        function renderProjects() {
+            const projectList = document.getElementById('project-list');
+            projectList.innerHTML = '';
+
+            projects.forEach(project => {
+                const projectElement = document.createElement('div');
+                projectElement.className = 'project';
+                projectElement.innerHTML = `
+                    <h3>${project.name}</h3>
+                    <div class="tasks">
+                        ${project.tasks.map(task => `
+                            <div class="task">
+                                <strong>${task.name}</strong>
+                                <p>Deadline: ${task.deadline}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                projectList.appendChild(projectElement);
+            });
+        }
+
+        function updateProjectOptions() {
+            const taskProject = document.getElementById('task-project');
+            taskProject.innerHTML = '';
+
+            projects.forEach(project => {
+                const option = document.createElement('option');
+                option.value = project.name;
+                option.textContent = project.name;
+                taskProject.appendChild(option);
+            });
+        }
+    </script>
+</body>
+</html>
