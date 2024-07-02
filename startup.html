@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Board</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background: #444;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background: url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
+            color: #fff;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .features, .blog {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .features h2, .blog h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .features .feature, .blog .post {
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Media queries */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Startup Board</h1>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Connecting Investors and Startups</h2>
+            <p>Where innovation meets investment</p>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="feature">
+                <h3>Investor-Startup Interaction</h3>
+                <p>Platform for investors and startups to interact, share ideas, and collaborate on projects.</p>
+            </div>
+            <div class="feature">
+                <h3>Request Help</h3>
+                <p>Startups can request help from investors and mentors to grow their business.</p>
+            </div>
+            <div class="feature">
+                <h3>Secure Messaging</h3>
+                <p>Private and secure messaging system for confidential communication.</p>
+            </div>
+            <div class="feature">
+                <h3>Networking Events</h3>
+                <p>Join our regular networking events to meet potential partners and investors.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2>Blog</h2>
+            <div class="post">
+                <h3>Latest Trends in the Startup Ecosystem</h3>
+                <p>Stay updated with the latest trends and happenings in the startup world.</p>
+            </div>
+            <div class="post">
+                <h3>How to Pitch to Investors</h3>
+                <p>Tips and strategies for making a successful pitch to potential investors.</p>
+            </div>
+            <div class="post">
+                <h3>Success Stories</h3>
+                <p>Read about successful startups and how they achieved their goals.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Contact: info@startupboard.com | Phone: 123-456-7890</p>
+        </div>
+    </footer>
+</body>
+</html>
